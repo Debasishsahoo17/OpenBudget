@@ -1,0 +1,11 @@
+services:
+  openbudget:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - OPENBUDGET_DB=/app/data/openbudget.sqlite3
+      # Behind HTTPS proxy: set OPENBUDGET_SECURE_COOKIES=1
+    restart: unless-stopped
